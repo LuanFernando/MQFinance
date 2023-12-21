@@ -1,0 +1,130 @@
+NOTES: 
+
+1° Verifique se o seu servidor , está habilitado o uso do HTTP DELETE,PUT.
+
+2° Script das tabelas do banco de dados abaixo:
+
+--
+-- Estrutura para tabela `cash_flow`
+--
+
+CREATE TABLE `cash_flow` (
+  `id` int(11) NOT NULL,
+  `identifier` varchar(255) NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  `type` tinyint(1) NOT NULL,
+  `photo_note` varchar(255) DEFAULT NULL,
+  `value` float NOT NULL,
+  `created_at` date NOT NULL,
+  `updated_at` date DEFAULT NULL,
+  `deleted_at` date DEFAULT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+--
+-- Estrutura para tabela `investment_box`
+--
+
+CREATE TABLE `investment_box` (
+  `id` int(11) NOT NULL,
+  `identifier` varchar(255) NOT NULL,
+  `color_box` varchar(255) NOT NULL,
+  `created_at` date NOT NULL,
+  `updated_at` date DEFAULT NULL,
+  `deleted_at` date DEFAULT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+--
+-- Estrutura para tabela `investment_entry`
+--
+
+CREATE TABLE `investment_entry` (
+  `id` int(11) NOT NULL,
+  `id_investment_box` int(11) NOT NULL,
+  `id_investment_entry` int(11) NOT NULL,
+  `created_at` date NOT NULL,
+  `updated_at` date DEFAULT NULL,
+  `deleted_at` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `users`
+--
+
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `user_token` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `path_photo` varchar(255) DEFAULT NULL,
+  `created_at` date NOT NULL,
+  `updated_at` date DEFAULT NULL,
+  `deleted_at` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `cash_flow`
+--
+ALTER TABLE `cash_flow`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `investment_box`
+--
+ALTER TABLE `investment_box`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `investment_entry`
+--
+ALTER TABLE `investment_entry`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `cash_flow`
+--
+ALTER TABLE `cash_flow`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `investment_box`
+--
+ALTER TABLE `investment_box`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de tabela `investment_entry`
+--
+ALTER TABLE `investment_entry`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
